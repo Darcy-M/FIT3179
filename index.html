@@ -7,20 +7,27 @@
   <!-- Import vega-embed -->
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
+  
 <body>
+  <h1> A tourists guide to Japan </h1>
+  <h2> This first map shows the most populous areas of Japan: </h2>
 
-<div id="vis"></div>
+<div id="prefecturepop"></div>
+  
+  <h2> This second chart shows the number of international arrivals into Japan as well as their spending habits
+    whilst in Japan. </h2>
+  
+<div id="bubble"></div>
+
 
 <script type="text/javascript">
-  var spec = "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/expenditure_arrivals_bubble.json";
-  vegaEmbed('#vis', spec).then(function(result) {
+  var vis1 = "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/expenditure_arrivals_bubble.json";
+  vegaEmbed('#bubble', spec).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
-</script>
   
-<script type="text/javascript">
-  var spec = "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/prefecture_population.json";
-  vegaEmbed('#vis', spec).then(function(result) {
+  var vis2 = "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/prefecture_population.json";
+  vegaEmbed('#prefecturepop', spec).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
