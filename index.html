@@ -12,7 +12,14 @@
 <div id="vis"></div>
 
 <script type="text/javascript">
-  var spec = "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/Week_9_Homework_map.json";
+  var spec = "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/expenditure_arrivals_bubble.json";
+  vegaEmbed('#vis', spec).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+</script>
+  
+<script type="text/javascript">
+  var spec = "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/prefecture_population.json";
   vegaEmbed('#vis', spec).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
