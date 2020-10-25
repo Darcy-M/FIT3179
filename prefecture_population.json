@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "title": "Population of Japanese Prefectures",
-  "width": 700,
-  "height": 500,
+  "width": 800,
+  "height": 600,
   "data": {
     "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/japan.json",
     "format": {"type": "topojson", "feature": "japan"}
