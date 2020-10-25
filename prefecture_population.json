@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Population of Japanese Prefectures",
+  "width": 700,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/japan.json",
+    "format": {"type": "topojson", "feature": "japan"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.nam",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/Most_popular_prefectures.csv"
+        },
+        "key": "Prefecture",
+        "fields": ["Population", "Population_percentage"]
+      }
+    },
+    {"calculate": "datum.Population", "as": "Population"}
+  ],
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [-120, 10],
+    "center": [20, 46],
+    "scale": 1700
+  },
+  "layer": [
+    {
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "color": {
+          "field": "Population",
+          "type": "quantitative",
+          "scale": {"type": "log"}
+        },
+        "tooltip": [
+          {"field": "properties.nam", "type": "nominal", "title": "Prefecture"},
+          {"field": "Population", "type": "quantitative", "format": ".3s"},
+          {
+            "field": "Population_percentage",
+            "type": "quantitative",
+            "format": ".3f",
+            "title": "% of total population"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 0,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Prefecture", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Prefecture'] == 'Toyko' || datum['Prefecture'] == 'Hokkaido' || datum['Prefecture'] == 'Osaka'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    }
+  ],
+  "config": {}
+}
