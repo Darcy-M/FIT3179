@@ -1,0 +1,16 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Average expenditure (Japanese Yen)",
+  "width": 700,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/Travel_expenditure_Australians_by_category.csv"
+  },
+  "mark": {"type": "bar", "cornerRadiusEnd": 4},
+  "config": {"legend": {"disable": true}},
+  "encoding": {
+    "x": {"field": "Purchases", "type": "quantitative"},
+    "y": {"field": "Category", "type": "nominal"},
+    "color": {"field": "Category"}
+  }
+}

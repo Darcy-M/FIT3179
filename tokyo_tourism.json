@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "background": "aliceblue",
+  "title": "Foreigners in Tokyo",
+  "width": 700,
+  "height": 600,
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [-120, 10],
+    "center": [22.83, 45],
+    "scale": 100000
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/tokyo23.topojson",
+        "format": {"type": "topojson", "feature": "tokyo23"}
+      },
+      "transform": [
+        {
+          "lookup": "id",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/tokyo23.csv"
+            },
+            "key": "id",
+            "fields": ["perc_foreigners"]
+          }
+        }
+      ],
+      "mark": "geoshape",
+      "encoding": {
+        "color": {
+          "field": "perc_foreigners",
+          "type": "quantitative",
+          "scale": {"domain": [0, 10], "scheme": "lightorange"}
+        },
+        "tooltip": [
+          {"field": "ward", "type": "nominal", "title": "Ward"},
+          {
+            "field": "perc_foreigners",
+            "type": "quantitative",
+            "title": "Foreigners as % of Population"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/tourist_locations_tokyo.csv"
+      },
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"}
+      },
+      "layer": [
+        {
+          "mark": {"type": "point", "color": "slateblue", "fill": "white"},
+          "encoding": {
+            "tooltip": [
+              {"field": "Area", "type": "nominal"},
+              {
+                "field": "Popularity",
+                "type": "quantitative",
+                "title": "% of visitors"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "config": {}
+}
