@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "title": "Population of Japanese Prefectures",
+  "title": "Cherry Blossom Season Dates - 2018",
   "width": 700,
   "height": 500,
   "projection": {
@@ -52,6 +52,7 @@
         },
         "tooltip": [
           {"field": "properties.nam", "type": "nominal", "title": "Prefecture"},
+          {"field": "First_Bloom", "title": "2018 date of first bloom"},
           {"field": "Full_Bloom", "title": "2018 date of full bloom"},
           {"field": "Final_Bloom", "title": "2018 end of season"}
         ]
