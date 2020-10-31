@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Population of Japanese Prefectures",
+  "width": 700,
+  "height": 500,
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [-120, 10],
+    "center": [20, 46],
+    "scale": 1700
+  },
+  "params": [
+    {
+      "name": "Month_select",
+      "value": "March",
+      "bind": {
+        "input": "select",
+        "options": ["March", "April", "May"],
+        "labels": ["March", "April", "May"],
+        "name": "Select Month: "
+      }
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/japan.json",
+    "format": {"type": "topojson", "feature": "japan"}
+  },
+  "layer": [
+    {"mark": {"type": "geoshape", "fill": "lightgrey", "stroke": "white"}},
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/japan.json",
+        "format": {"type": "topojson", "feature": "japan"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.nam",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/Sakura_bloom.csv"
+            },
+            "key": "Prefecture",
+            "fields": ["First_Bloom", "Full_Bloom", "Final_Bloom", "Month"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape", "fill": "purple", "stroke": "white"},
+      "encoding": {
+        "opacity": {
+          "condition": {"test": "datum['Month'] == Month_select", "value": 1},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "properties.nam", "type": "nominal", "title": "Prefecture"},
+          {"field": "Full_Bloom", "title": "2018 date of full bloom"},
+          {"field": "Final_Bloom", "title": "2018 end of season"}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
