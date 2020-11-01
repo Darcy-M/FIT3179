@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Ski Resorts in Japanese Prefectures",
+  "background": "floralwhite",
+  "width": 700,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/japan.json",
+    "format": {"type": "topojson", "feature": "japan"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.nam",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/random_prefec_data.csv"
+        },
+        "key": "Prefecture",
+        "fields": ["Ski_resorts"]
+      }
+    },
+    {"calculate": "datum.Ski_resorts", "as": "Ski_resorts"}
+  ],
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [-120, 10],
+    "center": [20, 46],
+    "scale": 1700
+  },
+  "layer": [
+    {"mark": {"type": "geoshape", "fill": "lightgrey", "stroke": "mistyrose"}},
+    {
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "color": {
+          "field": "Ski_resorts",
+          "type": "quantitative",
+          "scale": {"type": "sqrt"}
+        },
+        "tooltip": [
+          {"field": "properties.nam", "type": "nominal", "title": "Prefecture"},
+          {
+            "field": "Ski_resorts",
+            "type": "quantitative",
+            "title": "Number of Resorts"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {}
+}

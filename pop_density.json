@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Population Density in Japanese Prefectures",
+  "background": "azure",
+  "width": 700,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/japan.json",
+    "format": {"type": "topojson", "feature": "japan"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.nam",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/random_prefec_data.csv"
+        },
+        "key": "Prefecture",
+        "fields": ["Population_density"]
+      }
+    },
+    {"calculate": "datum.Population_density", "as": "Population_density"}
+  ],
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [-120, 10],
+    "center": [20, 46],
+    "scale": 1700
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightgrey",
+        "stroke": "paleturquoise"
+      }
+    },
+    {
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "color": {
+          "field": "Population_density",
+          "type": "quantitative",
+          "scale": {"type": "log", "scheme": "magma", "reverse": true}
+        },
+        "tooltip": [
+          {"field": "properties.nam", "type": "nominal", "title": "Prefecture"},
+          {
+            "field": "Population_density",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Residents per square km"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {}
+}

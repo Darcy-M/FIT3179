@@ -1,0 +1,47 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Temples in Japanese Prefectures",
+  "background": "azure",
+  "width": 700,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/japan.json",
+    "format": {"type": "topojson", "feature": "japan"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.nam",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/random_prefec_data.csv"
+        },
+        "key": "Prefecture",
+        "fields": ["Temples"]
+      }
+    },
+    {"calculate": "datum.Temples", "as": "Temples"}
+  ],
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [-120, 10],
+    "center": [20, 46],
+    "scale": 1700
+  },
+  "layer": [
+    {
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "color": {
+          "field": "Temples",
+          "type": "quantitative",
+          "scale": {"type": "linear", "scheme": "magma", "reverse": true}
+        },
+        "tooltip": [
+          {"field": "properties.nam", "type": "nominal", "title": "Prefecture"},
+          {"field": "Temples", "type": "quantitative"}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
