@@ -1,0 +1,101 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "height": 500,
+  "width": 500,
+  "title": "WEF Rankings",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/wef_rankings.csv"
+  },
+  "params": [
+    {
+      "name": "Category_select",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Railroad Infrastructure",
+          "Tourism Competitiveness",
+          "World Heritage Sites"
+        ],
+        "labels": [
+          "Show All",
+          "Railroad Infrastructure",
+          "Tourism Competitiveness",
+          "World Heritage Sites"
+        ],
+        "name": "Select Category: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "Category_select == null || datum.Attribute == Category_select"}
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "text",
+        "baseline": "middle",
+        "dy": -15,
+        "font": "Courier",
+        "fontSize": 11.5,
+        "fontStyle": "bold"
+      },
+      "encoding": {
+        "x": {
+          "field": "Rank",
+          "type": "quantitative",
+          "scale": {"domain": [0, 16]}
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "scale": {"domain": [4.5, 7]},
+          "axis": {"tickCount": 7}
+        },
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {"test": "datum['Country'] == 'Japan'", "value": 1},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Country"},
+          {"field": "Value", "title": "Score"},
+          {"field": "Rank"},
+          {"field": "Attribute", "title": "Category"}
+        ]
+      }
+    },
+    {
+      "mark": "point",
+      "encoding": {
+        "x": {"field": "Rank", "type": "quantitative"},
+        "y": {
+          "field": "Value",
+          "title": "Score",
+          "type": "quantitative",
+          "scale": {"domain": [4.5, 7]}
+        },
+        "color": {
+          "field": "Attribute",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Railroad Infrastructure",
+              "Tourism Competitiveness",
+              "World Heritage Sites"
+            ],
+            "range": ["purple", "red", "deepskyblue"]
+          }
+        },
+        "tooltip": [
+          {"field": "Country"},
+          {"field": "Value", "title": "Score"},
+          {"field": "Rank"},
+          {"field": "Attribute", "title": "Category"}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
