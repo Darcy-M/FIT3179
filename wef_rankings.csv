@@ -1,46 +1,46 @@
-﻿Country,Rank,Value,Attribute_number,Attribute
-Spain,1,5.42641261,3,Tourism Competitiveness
-France,2,5.32258391,3,Tourism Competitiveness
-Germany,3,5.28369874,3,Tourism Competitiveness
-Japan,4,5.2636705,3,Tourism Competitiveness
-United Kingdom,5,5.20257539,3,Tourism Competitiveness
-United States,6,5.1218458,3,Tourism Competitiveness
-Australia,7,5.10114478,3,Tourism Competitiveness
-Italy,8,4.99277768,3,Tourism Competitiveness
-Canada,9,4.97082863,3,Tourism Competitiveness
-Switzerland,10,4.94267671,3,Tourism Competitiveness
-Hong Kong SAR,11,4.86421336,3,Tourism Competitiveness
-Austria,12,4.85739137,3,Tourism Competitiveness
-Singapore,13,4.85458271,3,Tourism Competitiveness
-Portugal,14,4.74173633,3,Tourism Competitiveness
-China,15,4.72381541,3,Tourism Competitiveness
-Japan,1,6.66379447,1,Railroad Infrastructure
-Switzerland,2,6.56591204,1,Railroad Infrastructure
-Hong Kong SAR,3,6.36268316,1,Railroad Infrastructure
-France,4,5.8444408,1,Railroad Infrastructure
-Singapore,5,5.73991805,1,Railroad Infrastructure
-Finland,6,5.65738628,1,Railroad Infrastructure
-Netherlands,7,5.63852796,1,Railroad Infrastructure
-Spain,8,5.59482133,1,Railroad Infrastructure
-"Korea, Rep.",9,5.51921768,1,Railroad Infrastructure
-"Taiwan, China",10,5.38941793,1,Railroad Infrastructure
-Germany,11,5.36068586,1,Railroad Infrastructure
-Austria,12,5.31555719,1,Railroad Infrastructure
-United States,13,5.12657062,1,Railroad Infrastructure
-China,14,5.07270923,1,Railroad Infrastructure
-Malaysia,15,5.06435058,1,Railroad Infrastructure
-Italy,1,6.528543,2,World Heritage Sites
-Spain,2,6.462177476,2,World Heritage Sites
-France,3,6.428464545,2,World Heritage Sites
-Germany,4,6.421179598,2,World Heritage Sites
-China,5,6.405999982,2,World Heritage Sites
-India,6,6.200990393,2,World Heritage Sites
-Mexico,6,6.200990393,2,World Heritage Sites
-United Kingdom,8,6.134786184,2,World Heritage Sites
-"Iran, Islamic Rep.",9,5.857868296,2,World Heritage Sites
-Greece,10,5.582800343,2,World Heritage Sites
-Japan,11,5.458592762,2,World Heritage Sites
-Russian Federation,12,5.448592762,2,World Heritage Sites
-Turkey,13,5.277268322,2,World Heritage Sites
-Portugal,14,5.048578402,2,World Heritage Sites
-Sweden,15,4.901673833,2,World Heritage Sites
+﻿Country,Rank,Value,Attribute_number,Attribute,,,,,,
+Spain,1,5.426,3,Tourism Competitiveness,,,,,,
+France,2,5.323,3,Tourism Competitiveness,,,,,,
+Germany,3,5.284,3,Tourism Competitiveness,,,,,,
+Japan,4,5.264,3,Tourism Competitiveness,,,,,,
+United Kingdom,5,5.203,3,Tourism Competitiveness,,,,,,
+United States,6,5.122,3,Tourism Competitiveness,,,,,,
+Australia,7,5.101,3,Tourism Competitiveness,,,,,,
+Italy,8,4.993,3,Tourism Competitiveness,,,,,,
+Canada,9,4.971,3,Tourism Competitiveness,,,,,,
+Switzerland,10,4.943,3,Tourism Competitiveness,,,,,,
+Hong Kong SAR,11,4.864,3,Tourism Competitiveness,,,,,,
+Austria,12,4.857,3,Tourism Competitiveness,,,,,,
+Singapore,13,4.855,3,Tourism Competitiveness,,,,,,
+Portugal,14,4.742,3,Tourism Competitiveness,,,,,,
+China,15,4.724,3,Tourism Competitiveness,,,,,,
+Japan,1,6.664,1,Railroad Infrastructure,,,,,,
+Switzerland,2,6.566,1,Railroad Infrastructure,,,,,,
+Hong Kong SAR,3,6.363,1,Railroad Infrastructure,,,,,,
+France,4,5.844,1,Railroad Infrastructure,,,,,,
+Singapore,5,5.740,1,Railroad Infrastructure,,,,,,x
+Finland,6,5.657,1,Railroad Infrastructure,,,,,,
+Netherlands,7,5.639,1,Railroad Infrastructure,,,,,,
+Spain,8,5.595,1,Railroad Infrastructure,,,,,,
+"Korea, Rep.",9,5.519,1,Railroad Infrastructure,,,,,,
+"Taiwan, China",10,5.389,1,Railroad Infrastructure,,,,,,
+Germany,11,5.361,1,Railroad Infrastructure,,,,,,
+Austria,12,5.316,1,Railroad Infrastructure,,,,,,
+United States,13,5.127,1,Railroad Infrastructure,,,,,,
+China,14,5.073,1,Railroad Infrastructure,,,,,,
+Malaysia,15,5.064,1,Railroad Infrastructure,,,,,,
+Italy,1,6.529,2,World Heritage Sites,,,,,,
+Spain,2,6.462,2,World Heritage Sites,,,,,,
+France,3,6.428,2,World Heritage Sites,,,,,,
+Germany,4,6.421,2,World Heritage Sites,,,,,,
+China,5,6.406,2,World Heritage Sites,,,,,,
+India,6,6.201,2,World Heritage Sites,,,,,,
+Mexico,6,6.201,2,World Heritage Sites,,,,,,
+United Kingdom,8,6.135,2,World Heritage Sites,,,,,,
+"Iran, Islamic Rep.",9,5.858,2,World Heritage Sites,,,,,,
+Greece,10,5.583,2,World Heritage Sites,,,,,,
+Japan,11,5.449,2,World Heritage Sites,,,,,,
+Russian Federation,11,5.449,2,World Heritage Sites,,,,,,
+Turkey,13,5.277,2,World Heritage Sites,,,,,,
+Portugal,14,5.049,2,World Heritage Sites,,,,,,
+Sweden,15,4.902,2,World Heritage Sites,,,,,,
