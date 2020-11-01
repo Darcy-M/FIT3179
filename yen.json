@@ -1,0 +1,20 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Australian Dollar to Yen (10 years)",
+  "width": 700,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/yen_exchange.csv"
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "Date", "type": "temporal"},
+    "y": {
+      "field": "Exchange_rate",
+      "type": "quantitative",
+      "title": "Exchange Rate"
+    },
+    "tooltip": [{"field": "Exchange_rate", "title": "$1AUD = (Yen)"}]
+  },
+  "config": {}
+}
