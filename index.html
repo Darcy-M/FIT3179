@@ -1,83 +1,156 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
-  <!-- Import vega-embed -->
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  
-  <!-- CSS file -->
-  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
-  
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<h1> A Tourist's Guide to Japan </h1>
-  <h2> Japan has become one of the most popular tourist destinations of recent times. Travel to Japan has increased fourfold in the past 10 years: </h2>
-
-<div id="total_visitors"></div>
-  <br>
-  
-  <h2> Japan is also regarded as among the top countries in the world for Tourism competitiveness, Railroad infrastructure, and World Heritage Sites, according to the World Economic Fund: </h2>
-  
-<div id="wef_rankings"></div>
-  <br>
-
-
-  <h2> So who are the most common visitors to Japan, and how much do they spend in an average trip? Well the following graph shows
-  that China has by far the most travellers to Japan, however Australians are the biggest spenders when over there! </h2>
-  
-<div id="scatter_plot"></div>
-  <br>
-<div id="expense_category"></div>
-  <br>
-  
-  <h2> One of the hardest parts about travelling to Japan is simply finding the best places to go; there are simply so many options!
-  The following few graphs might inform your decision:
-  </h2>
-  
-  <h4> Would you like to go somewhere bustling and busy like Tokyo or Osaka? Or would you rather wind back and visit the serenity of Hokkaido? </h4>
-  
-<div id="pop_density"></div>
-  <br>
-  
-  <h4> Are you going in winter? These prefectures have you covered for ski resorts!</h4>
-
-<div id="ski_resorts"></div>
-  <br>
-  
-  <h4> Buddhist temples are a staple of any trip to Japan and can be found everywhere! However, some prefectures have many more of them than others! </h4>
-
-<div id="temples"></div>
-  <br>
- 
-  <h4> For overall beauty, though, there are a few prefectures that Japanese people consider to be the most attractive: </h4>
-  
-<div id="attractiveness"></div>
-  <br>
-
-  <h2> One place you simply have to go is Tokyo, the biggest city in the country. The following shows the major sites of Tokyo, along with the areas where 
-  the most foreigners live.
-  </h2>
-  
-<div id="tokyo"></div>
-  <br>
- 
-  <h2> Finally, there are the famous cherry blossoms. The sakura, as they are known in Japanese, bloom in the spring across Japan. However, due to the climate across 
-  the country, you want to make sure you know what date they will be blooming in your area! </h2>
-
-<div id="sakura"></div>
-  <br>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css" integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/c25a4b7884.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>Tourism in Japan - a data exploration</title>
+      
+      <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+      <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+      <!-- Import vega-embed -->
+      <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  </head>
     
-<!-- <div id="yen"></div>
- -->
-  
-<!-- <div class=col-12
- -->
+  <body>
+   <div class="container-fluid mt-3">
+      <div class="row">
+         <div class="col">
+         <center>
+             <h1 class="mx-auto font-weight-bold name-title">A Guide to Tourism in Japan</h1>
+            <p class="page-info"> Japan has become one of the most popular tourist destinations of recent times, and the Land of the Rising Sun has certainly found it's way onto the bucket lists of many intrepid travellers due to it's bustling cities, innovative technology, and beautiful landscapes. In this page, I plan to guide you through not only the best places to visit, but also to give some advice about how to get the most out of your unforgettable journey! </p>
+         </center>
+         </div>
+      </div>
+    <br>
+      <div class="row">
+         <div class="col">
+            <center><h2 class="mx-auto"> Some Context </h1>
+            <h5 class="mx-auto"> Where does Japan sit on the world stage?</h5>
+            <p><em> While the heavy-hitters in world tourism remain European countries like France and Spain, there is no doubt that Japan is quickly catching up.</em></p> <br>
+            </center>            
+           <div class="row">
+               <div class="col-md-6">
+                   <center><p> This first graph compares Japanese international arrivals to other major tourist countries. This number has grown from 7 million in 2006, to an incredible 31 million in 2018. It is now almost as popular a tourist destination as the UK! </p></center>
+                   <div class="card">
+                    <div class="card-body" id="total_visitors"></div>
+                </div>
+               </div>
+               <div class="col-md-6">
+                   <center><p> This second graph shows the results from a 2017 World Economic Forum study, ranking countries' performance in several key categories out of 7. Japan had the best railroad infrastructure in the world, and ranks comfortably in the top 15 for tourism competitiveness and World Heritage sites.  </p></center>
+                   <div class="card">
+                    <center><div class="card-body" id="wef_rankings"></div></center>
+                </div>
+               </div>
+           </div>
+         </div>
+      </div>
+       
+       <br>
+       <br>
+       
+      <div class="row">
+         <div class="col">
+            <center>
+            <h5 class="mx-auto"> Who are the major travellers to Japan?</h5>
+            <p><em> China has by far the largest number of visitors to Japan, and the Aussies like to spend big!</em></p> <br>
+            </center>            
+           <div class="row">
+               <div class="col-md-7">
+                   <center><p> This graph is a country-by-country comparison of the number of visitors to Japan, as well as the average amount of money spend while abroad.</p></center>
+                   <div class="card">
+                    <center><div class="card-body" id="Bubble_chart"></div></center>
+                </div>
+               </div>
+               <div class="col-md-5">
+                   <center><p> In 2019, the average Australian spent almost 250,000 yen, which equates to almost $3,500AUD. To make sure you're prepared for your trip, here's how they mostly spent it:</p></center>
+                   <div class="card">
+                    <center><div class="card-body" id="expense_category"></div></center>
+                </div>
+               </div>
+           </div>
+         </div>
+      </div>
+       
+       
+       <br>
+       <br>
+       
+      <div class="row">
+         <div class="col">
+            <center>
+            <h5 class="mx-auto"> What areas should I visit?</h5>
+            <p><em> The best thing about Japan is the variety! You can spend your time entirely in cities, or by soaking in the natural wonders. </em></p> <br>
+            </center>            
+           <div class="row">
+               <div class="col-md-4">
+                   <center><p> If you're more of a city slicker, the darker suburbs (where the population density is high) might be your go-to! Otherwise, places like Hokkaido have a lot of natural beauty. </p></center>
+                   <div class="card">
+                    <center><div class="card-body" id="pop_density"></div></center>
+                </div>
+               </div>
+               <div class="col-md-4">
+                   <center><p> Skiing is one of Japan's most famed passtimes! Naturally the north is where you want to be for the best skiing, but Nagano also has a large number of ski resorts. </p></center>
+                   <div class="card">
+                    <center><div class="card-body" id="ski_resorts"></div></center>
+                </div>
+               </div>
+               <div class="col-md-4">
+                   <center><p> Buddhist temples are a must-see part of Japan. Some of the oldest and most beautiful structures in the world, you might want to go somewhere packed full of them, such as Aichi. </p></center>
+                   <div class="card">
+                    <center><div class="card-body" id="temples"></div></center>
+                </div>
+               </div>
+           </div>
+         </div>
+      </div>
+       
+       <br>
+       <br>
+       
+      <div class="row">
+         <div class="col">
+            <center>
+            <h5 class="mx-auto"> What other things can I do?</h5>
+            </center><br>
+           <div class="row">
+               <div class="col-md-6">
+                   <center><p> Tokyo, the largest city in Japan, has many famous areas to visit! The following map shows the places visited by more than 10% of travellers in Tokyo. It also shows the concentration of foreign nationals in different areas. Looks like these areas aren't just popular with tourists - you'll enjoy it so much you might end up living there!</p></center>
+                   <div class="card">
+                    <div class="card-body" id="tokyo"></div>
+                </div>
+               </div>
+               <div class="col-md-6">
+                   <center><p> Spring in Japan means one thing - Cherry Blossoms. These trees are world renowned for their blooming, which takes place at different times across the country depending on the climate. Put in the month you're visiting, and the map will show you which prefectures have their 'Flower Viewing' while you are there! </p></center>
+                   <div class="card">
+                    <center><div class="card-body" id="sakura"></div></center>
+                </div>
+               </div>
+           </div>
+         </div>
+      </div>
 
-<script type="text/javascript">
+    <center><br>
+    <h5 class="mx-auto"> Now, enjoy your trip! </h5>
+    </center><br>
+
+
+   </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      
+    <script type="text/javascript">
   
   var vis1 = "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/prefecture_population.json";
   
@@ -85,9 +158,9 @@
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
   
-  var vis2 = "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/expenditure_arrivals_bubble.json";
+  var vis2 = "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/Bubble_chart.json";
   
-  vegaEmbed('#scatter_plot', vis2).then(function(result) {
+  vegaEmbed('#Bubble_chart', vis2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
   
@@ -157,9 +230,7 @@
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
-  
-
-</script>
-
+      </script>
+    
   </body>
 </html>
