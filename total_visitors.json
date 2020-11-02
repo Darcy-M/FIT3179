@@ -1,0 +1,31 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "International visitors to various countries",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/WDI_data.csv"
+  },
+  "mark": "bar",
+  "width": 500,
+  "height": 500,
+  "encoding": {
+    "y": {
+      "aggregate": "sum",
+      "field": "Visitors",
+      "title": "Proportion of visitors",
+      "stack": "normalize"
+    },
+    "x": {"field": "Year"},
+    "color": {"field": "Country Name"},
+    "tooltip": [
+      {"field": "Year"},
+      {"field": "Country Name"},
+      {"field": "Visitors", "format": ","},
+      {
+        "field": "Proportion",
+        "format": ".2f",
+        "title": "Proportion of visitors"
+      }
+    ]
+  },
+  "config": {}
+}
