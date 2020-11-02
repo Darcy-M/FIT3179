@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "title": "Population Density in Japanese Prefectures",
-  "background": "azure",
-  "width": 700,
-  "height": 500,
+  "height": 400,
+  "width": 350,
+  "config": {"style": {"cell": {"stroke": "transparent"}}},
   "data": {
     "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/japan.json",
     "format": {"type": "topojson", "feature": "japan"}
@@ -23,25 +23,21 @@
   ],
   "projection": {
     "type": "equalEarth",
-    "rotate": [-120, 10],
+    "rotate": [-120, 9],
     "center": [20, 46],
-    "scale": 1700
+    "scale": 1500
   },
   "layer": [
-    {
-      "mark": {
-        "type": "geoshape",
-        "fill": "lightgrey",
-        "stroke": "paleturquoise"
-      }
-    },
+    {"mark": {"type": "geoshape", "fill": "lightgrey", "stroke": "whitesmoke"}},
     {
       "mark": {"type": "geoshape"},
       "encoding": {
         "color": {
           "field": "Population_density",
           "type": "quantitative",
-          "scale": {"type": "log", "scheme": "magma", "reverse": true}
+          "title": "Population Density",
+          "scale": {"type": "log", "scheme": "magma", "reverse": true},
+          "legend": {"symbolSize": 150, "orient": "top-left"}
         },
         "tooltip": [
           {"field": "properties.nam", "type": "nominal", "title": "Prefecture"},
@@ -54,6 +50,5 @@
         ]
       }
     }
-  ],
-  "config": {}
+  ]
 }
