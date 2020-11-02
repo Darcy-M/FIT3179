@@ -1,20 +1,20 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 800,
-  "height": 600,
+  "width": 700,
+  "height": 400,
   "title": "Number of arrivals and average traveller expendiure in Japan",
   "data": {
     "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/Countries_of_origin.csv"
   },
   "params": [
     {
-      "name": "spent_above",
+      "name": "Expenditure_above",
       "value": 0,
       "bind": {
         "input": "range",
         "min": 0,
-        "max": 100000000,
-        "step": 1000000,
+        "max": 250000,
+        "step": 1000,
         "name": "Spent Above: "
       }
     },
@@ -41,7 +41,7 @@
     }
   ],
   "transform": [
-    {"filter": "datum.Expenditure > spent_above"},
+    {"filter": "datum.Expenditure > Expenditure_above"},
     {
       "filter": "Continent_selection == null || datum.Area == Continent_selection"
     }
@@ -52,14 +52,14 @@
       "type": "quantitative",
       "title": "International Arrivals",
       "axis": {"tickCount": 3},
-      "scale": {"type": "log", "domain": [10000, 10000000]}
+      "scale": {"type": "log", "domain": [100000, 100000000]}
     },
     "y": {
       "field": "Expenditure",
       "type": "quantitative",
       "title": "Expenditure per traveller",
       "axis": {"tickCount": 3},
-      "scale": {"type": "linear", "domain": [1, 300]}
+      "scale": {"type": "linear", "domain": [1, 300000]}
     }
   },
   "layer": [
@@ -81,11 +81,12 @@
             "domain": [1000000, 10000000, 100000000, 500000000],
             "range": [50, 150, 200, 300, 500]
           },
-          "legend": {"format": ".1s"}
+          "legend": {"format": ".1s", "orient": "top-right"}
         },
         "color": {
           "field": "Area",
           "type": "nominal",
+          "legend": {"orient": "bottom-right"},
           "scale": {
             "domain": [
               "East Asia",
@@ -116,9 +117,10 @@
     {
       "mark": {
         "type": "text",
-        "align": "right",
+        "align": "center",
         "baseline": "middle",
-        "dx": -12,
+        "dx": 0,
+        "dy": -17,
         "fontSize": 11.5,
         "fontStyle": "italic"
       },
@@ -127,7 +129,7 @@
         "color": {"value": "black"},
         "opacity": {
           "condition": {
-            "test": "datum['Country'] == 'China' || datum['Country'] == 'Australia' || datum['Country'] == 'South Korea' || datum['Country'] == 'Russia' || datum['Country'] == 'United States'|| datum['Country'] == 'Indonesia'",
+            "test": "datum['Country'] == 'China' || datum['Country'] == 'Australia' || datum['Country'] == 'South Korea' || datum['Country'] == 'Russia' || datum['Country'] == 'United States'|| datum['Country'] == 'Thailand'",
             "value": 1
           },
           "value": 0
