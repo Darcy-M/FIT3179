@@ -1,0 +1,139 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 600,
+  "title": "Number of arrivals and average traveller expendiure in Japan",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/Countries_of_origin.csv"
+  },
+  "params": [
+    {
+      "name": "spent_above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 100000000,
+        "step": 1000000,
+        "name": "Spent Above: "
+      }
+    },
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "East Asia",
+          "Southern Asia",
+          "Europe",
+          "Americas/Australia"
+        ],
+        "labels": [
+          "Show All",
+          "East Asia",
+          "Southern Asia",
+          "Europe",
+          "Americas/Australia"
+        ],
+        "name": "Area Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Expenditure > spent_above"},
+    {
+      "filter": "Continent_selection == null || datum.Area == Continent_selection"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Arrivals",
+      "type": "quantitative",
+      "title": "International Arrivals",
+      "axis": {"tickCount": 3},
+      "scale": {"type": "log", "domain": [10000, 10000000]}
+    },
+    "y": {
+      "field": "Expenditure",
+      "type": "quantitative",
+      "title": "Expenditure per traveller",
+      "axis": {"tickCount": 3},
+      "scale": {"type": "linear", "domain": [1, 300]}
+    }
+  },
+  "layer": [
+    {
+      "selection": {
+        "continent_highlight": {
+          "type": "multi",
+          "fields": ["Area"],
+          "bind": "legend"
+        }
+      },
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "field": "Population",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [1000000, 10000000, 100000000, 500000000],
+            "range": [50, 150, 200, 300, 500]
+          },
+          "legend": {"format": ".1s"}
+        },
+        "color": {
+          "field": "Area",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "East Asia",
+              "Southern Asia",
+              "Europe",
+              "Americas/Australia"
+            ],
+            "range": ["forestgreen", "deeppink", "#ff7f00", "deepskyblue"]
+          }
+        },
+        "opacity": {
+          "condition": {"selection": "continent_highlight", "value": 0.6},
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "Arrivals", "type": "quantitative", "format": ","},
+          {
+            "field": "Expenditure",
+            "type": "quantitative",
+            "format": ".2f",
+            "title": "Expenditure per traveller"
+          },
+          {"field": "Population", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Country'] == 'China' || datum['Country'] == 'Australia' || datum['Country'] == 'South Korea' || datum['Country'] == 'Russia' || datum['Country'] == 'United States'|| datum['Country'] == 'Indonesia'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    }
+  ],
+  "config": {}
+}
