@@ -24,7 +24,7 @@
               "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/tokyo23.csv"
             },
             "key": "id",
-            "fields": ["perc_foreigners"]
+            "fields": ["perc_foreigners", "ward"]
           }
         }
       ],
@@ -68,6 +68,31 @@
           }
         }
       ]
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/tourist_locations_tokyo.csv"
+      },
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"},
+        "text": {"field": "Area", "type": "nominal"},
+        "color": {"value": "aliceblue"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Area'] == 'Shinjuku' || datum['Area'] == 'Ueno' || datum['Area'] == 'Nihonbashi' || datum['Area'] == 'Shinagawa'",
+            "value": 1
+          },
+          "value": 0
+        }
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -9,
+        "fontSize": 13
+      }
     }
   ],
   "config": {}
