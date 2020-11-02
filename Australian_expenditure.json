@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "title": "Average Australian expenditure (Japanese Yen)",
-  "width": 400,
-  "height": 300,
+  "width": 300,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/Travel_expenditure_Australians_by_category.csv"
   },
