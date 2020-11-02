@@ -1,14 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "background": "aliceblue",
-  "title": "Foreigners in Tokyo",
+  "title": "Tourist areas of Tokyo",
+  "config": {"style": {"cell": {"stroke": "transparent"}}},
   "width": 700,
-  "height": 600,
+  "height": 450,
   "projection": {
     "type": "equalEarth",
     "rotate": [-120, 10],
-    "center": [22.83, 45],
-    "scale": 100000
+    "center": [22.86, 45],
+    "scale": 90000
   },
   "layer": [
     {
@@ -33,16 +33,12 @@
         "color": {
           "field": "perc_foreigners",
           "type": "quantitative",
-          "scale": {"domain": [0, 10], "scheme": "lightorange"}
-        },
-        "tooltip": [
-          {"field": "ward", "type": "nominal", "title": "Ward"},
-          {
-            "field": "perc_foreigners",
-            "type": "quantitative",
-            "title": "Foreigners as % of Population"
+          "scale": {"domain": [0, 10], "scheme": "lightorange"},
+          "legend": {
+            "title": "% of residents who are foreigners",
+            "orient": "bottom-right"
           }
-        ]
+        }
       }
     },
     {
@@ -55,7 +51,12 @@
       },
       "layer": [
         {
-          "mark": {"type": "point", "color": "slateblue", "fill": "white"},
+          "mark": {
+            "type": "point",
+            "color": "slateblue",
+            "fill": "white",
+            "size": 60
+          },
           "encoding": {
             "tooltip": [
               {"field": "Area", "type": "nominal"},
@@ -94,6 +95,5 @@
         "fontSize": 13
       }
     }
-  ],
-  "config": {}
+  ]
 }
