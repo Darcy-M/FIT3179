@@ -14,41 +14,58 @@
 </head>
 <body>
 
-<h1> A tourists guide to Japan </h1>
-  <h2> This first map shows the most densely populated areas of Japan: </h2>
+<h1> A Tourist's Guide to Japan </h1>
+  <h2> Japan has become one of the most popular tourist destinations of recent times. Travel to Japan has increased fourfold in the past 10 years: </h2>
 
-<div id="pop_density"></div>
-
-  <h2> This second chart shows the number of international arrivals into Japan as well as their spending habits
-    whilst in Japan. </h2>
+<div id="total_visitors"></div>
   
-<div id="scatter_plot"></div>
+  <h2> Japan is also regarded as among the top countries in the world for Tourism competitiveness, Railroad infrastructure, and World Heritage Sites, according to the World Economic Fund: </h2>
   
-  <h2> This third image is a map of Tokyo, with information about the proportion of residents who are foreigners. It also contains the most popular areas to visit for tourists,
-    with each area being visited by at least 10% of Tokyo tourists. </h2>
-  
-<div id="tokyo"></div>
-  
-  <h2> This final chart shows the average expenditure for Australians in their time in Japan as tourists. </h2>
- 
-<div id="expense_category"></div>
-
-    <h2> Oh also theres another one lul. </h2>
-
-<div id="sakura"></div>
-  
-  <h2> So I guess there are a few more whoops </h2>
-  
-<div id="yen"></div>
-
 <div id="wef_rankings"></div>
 
-<div id="ski_resorts"></div>
 
-<div id="attractiveness"></div>
+  <h2> So who are the most common visitors to Japan, and how much do they spend in an average trip? Well the following graph shows
+  that China has by far the most travellers to Japan, however Australians are the biggest spenders when over there! </h2>
+  
+<div id="scatter_plot"></div>
+<div id="expense_category"></div>
+  
+  <h2> One of the hardest parts about travelling to Japan is simply finding the best places to go; there are simply so many options!
+  The following few graphs might inform your decision:
+  </h2>
+  
+  <h4> Would you like to go somewhere bustling and busy like Tokyo or Osaka? Or would you rather wind back and visit the serenity of Hokkaido? </h4>
+  
+<div id="pop_density"></div>
+  
+  <h4> Are you going in winter? These prefectures have you covered for ski resorts!</h4>
+
+<div id="ski_resorts"></div>
+  
+  <h4> Buddhist temples are a staple of any trip to Japan and can be found everywhere! However, some prefectures have many more of them than others! </h4>
 
 <div id="temples"></div>
+ 
+  <h4> For overall beauty, though, there are a few prefectures that Japanese people consider to be the most attractive: </h4>
+  
+<div id="attractiveness"></div>
 
+  <h2> One place you simply have to go is Tokyo, the biggest city in the country. The following shows the major sites of Tokyo, along with the areas where 
+  the most foreigners live.
+  </h2>
+  
+<div id="tokyo"></div>
+ 
+  <h2> Finally, there are the famous cherry blossoms. The sakura, as they are known in Japanese, bloom in the spring across Japan. However, due to the climate across 
+  the country, you want to make sure you know what date they will be blooming in your area! </h2>
+
+<div id="sakura"></div>
+    
+<!-- <div id="yen"></div>
+ -->
+  
+<!-- <div class=col-12
+ -->
 
 <script type="text/javascript">
   
@@ -121,6 +138,12 @@
     var vis11 = "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/pop_density.json";
   
   vegaEmbed('#pop_density', vis11).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+    var vis12 = "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/total_visitors.json";
+  
+  vegaEmbed('#total_visitors', vis12).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
