@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "height": 500,
+  "height": 450,
   "width": 500,
-  "title": "WEF Rankings",
+  "title": "World Economic Forum Rankings - Top 15",
   "data": {
     "url": "https://raw.githubusercontent.com/Darcy-M/FIT3179/main/wef_rankings.csv"
   },
@@ -23,7 +23,7 @@
           "Tourism Competitiveness",
           "World Heritage Sites"
         ],
-        "name": "Select Category: "
+        "name": "Select Category:"
       }
     }
   ],
@@ -44,7 +44,8 @@
         "x": {
           "field": "Rank",
           "type": "quantitative",
-          "scale": {"domain": [0, 16]}
+          "scale": {"domain": [0, 16]},
+          "title": "Rank in the World"
         },
         "y": {
           "field": "Value",
@@ -57,19 +58,13 @@
         "opacity": {
           "condition": {"test": "datum['Country'] == 'Japan'", "value": 1},
           "value": 0
-        },
-        "tooltip": [
-          {"field": "Country"},
-          {"field": "Value", "title": "Score"},
-          {"field": "Rank"},
-          {"field": "Attribute", "title": "Category"}
-        ]
+        }
       }
     },
     {
-      "mark": "point",
+      "mark": {"type": "point", "size": 50},
       "encoding": {
-        "x": {"field": "Rank", "type": "quantitative"},
+        "x": {"field": "Rank", "type": "quantitative", "axis": {"grid": false}},
         "y": {
           "field": "Value",
           "title": "Score",
@@ -77,6 +72,13 @@
           "scale": {"domain": [4.5, 7]}
         },
         "color": {
+          "legend": {
+            "title": "Category",
+            "labelFontSize": 12,
+            "titleFontSize": 15,
+            "symbolSize": 150,
+            "orient": "top-right"
+          },
           "field": "Attribute",
           "type": "nominal",
           "scale": {
@@ -90,8 +92,8 @@
         },
         "tooltip": [
           {"field": "Country"},
-          {"field": "Value", "title": "Score"},
-          {"field": "Rank"},
+          {"field": "Value", "title": "Score (out of 7)"},
+          {"field": "Rank", "title": "Rank in the World"},
           {"field": "Attribute", "title": "Category"}
         ]
       }
